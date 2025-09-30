@@ -1,5 +1,6 @@
 import { Email } from '@/shared/email';
 import { Entity, type iEntityProperties } from '@/shared/entity';
+import type { HashPassword } from '@/shared/hash-password';
 import { NamePerson } from '@/shared/name-person';
 import { StrongPassword } from '@/shared/strong-password';
 
@@ -12,7 +13,7 @@ export interface iUserProperties extends iEntityProperties {
 export class User extends Entity<iUserProperties> {
   readonly name: NamePerson;
   readonly email: Email;
-  readonly password?: StrongPassword;
+  readonly password?: HashPassword;
 
   constructor(props: iUserProperties) {
     super(props);
