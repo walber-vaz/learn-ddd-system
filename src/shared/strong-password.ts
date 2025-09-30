@@ -5,8 +5,8 @@ export class StrongPassword {
   static readonly regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  constructor(readonly value: string) {
-    if (!StrongPassword.isValid(value)) {
+  constructor(readonly value?: string) {
+    if (!StrongPassword.isValid(value ?? '')) {
       throw ErrorValidation.throw({
         code: Errors.PASSWORDS_DO_NOT_MATCH,
       });
