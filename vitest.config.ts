@@ -5,9 +5,8 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     coverage: {
-      provider: 'istanbul',
+      provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      all: true,
       include: ['src/**/*.ts'],
       exclude: [
         'src/index.ts',
