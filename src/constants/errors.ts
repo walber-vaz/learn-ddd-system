@@ -1,3 +1,5 @@
 export const Errors = {
   UNKNOWN_ERROR: 'UNKNOWN_ERROR',
+  INVALID_EMAIL: 'INVALID_EMAIL',
+  NAME_TOO_SHORT: 'NAME_TOO_SHORT',
 } as const;
