@@ -1,5 +1,13 @@
 # Modelagem de Domínio - Sistema EAD
 
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vitest](https://img.shields.io/badge/Vitest-latest-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Biome](https://img.shields.io/badge/Biome-latest-60A5FA?logo=biome&logoColor=white)](https://biomejs.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![DDD](https://img.shields.io/badge/Architecture-DDD-orange)](https://en.wikipedia.org/wiki/Domain-driven_design)
+[![Clean Architecture](https://img.shields.io/badge/Architecture-Clean-purple)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+
 > 🎓 Projeto de estudos sobre arquitetura de software com foco em DDD (Domain-Driven Design), Arquitetura Hexagonal e Clean Architecture.
 
 ## 📋 Sobre o Projeto
