@@ -59,6 +59,28 @@ describe('Validator', () => {
     expect(errorArrayGreater?.code).toBe(msgError);
   });
 
+  it('should return null when string length is less than or equal to max length', () => {
+    expect(Validator.lessEqualWant('test', 5, 'error_code')).toBeNull();
+    expect(Validator.lessEqualWant('test', 4, 'error_code')).toBeNull();
+    expect(Validator.lessEqualWant([], 5, 'error_code')).toBeNull();
+    expect(Validator.lessEqualWant([1, 2, 3], 5, 'error_code')).toBeNull();
+    expect(Validator.lessEqualWant([1, 2, 3], 3, 'error_code')).toBeNull();
+  });
+
+  it('should return error code when string length is greater than max length', () => {
+    const msgError = 'error_code';
+
+    const errorGreater = Validator.lessEqualWant('testing', 4, msgError);
+    expect(errorGreater?.code).toBe(msgError);
+
+    const errorArrayGreater = Validator.lessEqualWant(
+      [1, 2, 3, 4, 5],
+      3,
+      msgError,
+    );
+    expect(errorArrayGreater?.code).toBe(msgError);
+  });
+
   it('should return null when string length is greater than min length', () => {
     expect(Validator.greaterWant('testing', 3, 'error_code')).toBeNull();
     expect(Validator.greaterWant([1, 2, 3, 4, 5], 3, 'error_code')).toBeNull();
@@ -75,6 +97,25 @@ describe('Validator', () => {
     const errorArrayExact = Validator.greaterWant([1, 2, 3], 3, msgError);
     expect(errorArrayExact?.code).toBe(msgError);
     const errorArrayLess = Validator.greaterWant([1], 3, msgError);
+    expect(errorArrayLess?.code).toBe(msgError);
+  });
+
+  it('should return null when string length is greater than or equal to min length', () => {
+    expect(Validator.greaterEqualWant('testing', 3, 'error_code')).toBeNull();
+    expect(Validator.greaterEqualWant('test', 4, 'error_code')).toBeNull();
+    expect(
+      Validator.greaterEqualWant([1, 2, 3, 4, 5], 3, 'error_code'),
+    ).toBeNull();
+    expect(Validator.greaterEqualWant([1, 2, 3], 3, 'error_code')).toBeNull();
+  });
+
+  it('should return error code when string length is less than min length', () => {
+    const msgError = 'error_code';
+
+    const errorLess = Validator.greaterEqualWant('te', 4, msgError);
+    expect(errorLess?.code).toBe(msgError);
+
+    const errorArrayLess = Validator.greaterEqualWant([1], 3, msgError);
     expect(errorArrayLess?.code).toBe(msgError);
   });
 
@@ -125,5 +166,22 @@ describe('Validator', () => {
       'error4',
       'error5',
     ]);
+  });
+
+  it('should return null when combining only null values', () => {
+    const result = Validator.toCombine(null, null, null);
+    expect(result).toBeNull();
+  });
+
+  it('should filter out null values and return only actual errors', () => {
+    const result = Validator.toCombine(
+      null,
+      Validator.notNull(null, 'error1'),
+      null,
+      Validator.notEmpty('', 'error2'),
+      null,
+    );
+    expect(result).toHaveLength(2);
+    expect(result?.map((e) => e.code)).toEqual(['error1', 'error2']);
   });
 });
