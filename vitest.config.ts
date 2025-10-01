@@ -18,6 +18,7 @@ export default defineConfig({
         'src/**/stubs/*.ts',
         'src/**/doubles/*.ts',
         'src/**/tests/*.ts',
+        'src/**/*-builder.ts',
       ],
     },
   },
