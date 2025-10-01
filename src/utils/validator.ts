@@ -38,12 +38,32 @@ export class Validator {
       : ErrorValidation.create({ value, code: error });
   }
 
+  static lessEqualWant(
+    value: string | unknown[],
+    lengthMax: number,
+    error: string,
+  ): ErrorValidation | null {
+    return value.length <= lengthMax
+      ? null
+      : ErrorValidation.create({ value, code: error });
+  }
+
   static greaterWant(
     value: string | unknown[],
     lengthMin: number,
     error: string,
   ): ErrorValidation | null {
     return value.length > lengthMin
+      ? null
+      : ErrorValidation.create({ value, code: error });
+  }
+
+  static greaterEqualWant(
+    value: string | unknown[],
+    lengthMin: number,
+    error: string,
+  ): ErrorValidation | null {
+    return value.length >= lengthMin
       ? null
       : ErrorValidation.create({ value, code: error });
   }
