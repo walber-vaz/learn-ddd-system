@@ -3,12 +3,7 @@
   "display": "Node 22",
   "_version": "22.0.0",
   "compilerOptions": {
-    "lib": [
-      "es2024",
-      "ESNext.Array",
-      "ESNext.Collection",
-      "ESNext.Iterator"
-    ],
+    "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
     "module": "nodenext",
     "target": "es2022",
     "strict": true,
@@ -20,16 +15,9 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src/**/*",
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
